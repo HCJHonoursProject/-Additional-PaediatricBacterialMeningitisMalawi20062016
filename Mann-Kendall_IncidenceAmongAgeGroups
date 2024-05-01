@@ -1,1 +1,61 @@
+---
+title: "Mann-Kendall Analysis for the Incidence of Both Age Groups"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-04-11"
+---
 
+```{r}
+install.packages("trend")
+install.packages("Kendall")
+library(trend)
+library(Kendall)
+
+```
+
+
+```{r}
+# 3 MONTHS TO 5 YEARS INCIDENCE DATA: MANN KENDALL STATISTICAL TEST
+incidence_data <- data.frame(
+  Year = 2006:2016,
+  Incidence = c(21.64424083, 26.10040806, 22.70523303, 
+                13.79289857, 8.700136019, 11.45871573, 
+                6.790350064, 10.39772354,
+                8.27573914, 9.336731338, 7.426945382))
+
+# Loading the required package for Mann-Kendall test
+if (!requireNamespace("Kendall", quietly = TRUE)) {
+  install.packages("Kendall")
+  library(Kendall)
+}
+
+# Mann-Kendall test for trend
+result <- MannKendall(incidence_data$Incidence)
+
+# Print the result
+print(result)
+```
+
+```{r}
+# 5 YEARS TO 15 YEARS INCIDENCE DATA: MANN KENDALL STATISTICAL TEST
+library(Kendall)
+
+# Create the data as vectors
+year <- c(2006:2016)
+incidence <- c(7.214746943, 4.24396879, 5.517159427, 3.182976592, 
+               3.819571911, 9.336731338, 6.365953185, 3.607373471,
+               6.365953185, 3.819571911, 1.273190637)
+
+data <- data.frame(year, incidence)
+
+# Perform the Mann-Kendall trend test
+result <- MannKendall(data$incidence)
+
+# Display the results
+print(result)
+
+# Print the results
+print(result)
+
+```
